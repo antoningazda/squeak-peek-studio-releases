@@ -1,0 +1,2357 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Visualization, segmentation, classification and sonification of ultrasonic vocalizations (USVs) of laboratory rodents.">
+      
+      
+        <meta name="author" content="Antonín Gazda">
+      
+      
+        <link rel="canonical" href="https://antoningazda.github.io/squeak-peek-studio-releases/troubleshooting/">
+      
+      
+        <link rel="prev" href="../file-formats/">
+      
+      
+        <link rel="next" href="../development/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/logo.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Troubleshooting - Squeak Peek Studio</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#troubleshooting" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Squeak Peek Studio" class="md-header__button md-logo" aria-label="Squeak Peek Studio" data-md-component="logo">
+      
+  <img src="../assets/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Squeak Peek Studio
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Troubleshooting
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Follow system theme"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Follow system theme" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="deep-orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="deep-orange"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/antoningazda/squeak-peek-studio-releases" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Squeak-Peek-Studio
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../install/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Install
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../quickstart/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Quickstart
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../guide/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  User guide
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../methods/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Methods
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../training/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Training models
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../cli/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  CLI reference
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../workflows/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  CLI workflows
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../file-formats/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  File formats
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Troubleshooting
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../development/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Development
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Squeak Peek Studio" class="md-nav__button md-logo" aria-label="Squeak Peek Studio" data-md-component="logo">
+      
+  <img src="../assets/logo.png" alt="logo">
+
+    </a>
+    Squeak Peek Studio
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/antoningazda/squeak-peek-studio-releases" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Squeak-Peek-Studio
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../install/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Install
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quickstart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quickstart
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../guide/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    User guide
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    User guide
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guide/data-input/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Input
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guide/visualization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Visualization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guide/detection/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Detection
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guide/classification/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Classification
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guide/label-edit/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Label Edit
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guide/video/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Video
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guide/metrics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Metrics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guide/settings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Settings
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guide/shortcuts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Keyboard shortcuts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../methods/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Methods
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../training/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Training models
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cli/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLI reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../workflows/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLI workflows
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../file-formats/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    File formats
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Troubleshooting
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Troubleshooting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Installation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Installation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#macos-squeak-peek-studio-is-damaged-and-cant-be-opened" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        macOS: “Squeak Peek Studio is damaged and can't be opened”
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#windows-windows-protected-your-pc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Windows: “Windows protected your PC”
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#linux-the-app-will-not-start" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Linux: the app will not start
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#loading-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Loading data
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Loading data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#loading-a-recording-is-slow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Loading a recording is slow
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#label-files-are-not-found-in-batch-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Label files are not found in batch mode
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-label-file-fails-to-load" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A label file fails to load
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#detection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Detection
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Detection">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#no-detections-at-all" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        No detections at all
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#far-too-many-detections" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Far too many detections
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-detector-fires-on-the-room-not-the-animal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The detector fires on the room, not the animal
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#i-accepted-or-rejected-the-wrong-call" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        I accepted or rejected the wrong call
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#one-call-detected-as-several-fragments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        One call detected as several fragments
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#call-onsets-are-clipped" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Call onsets are clipped
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detection-is-very-slow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Detection is very slow
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sonification-and-audio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sonification and audio
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sonification and audio">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#no-sound" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        No sound
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sonification-is-all-hiss" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sonification is all hiss
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sonification-sounds-smeared-or-phasey" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sonification sounds smeared or “phasey”
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-calls-are-still-too-high-to-hear-comfortably" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The calls are still too high to hear comfortably
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#video" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Video
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Video">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#no-broadband-transient-snap-found" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        “No broadband transient (snap) found”
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#could-not-extract-an-audio-track" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        “Could not extract an audio track”
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#video-and-audio-drift-apart" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Video and audio drift apart
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#classification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Classification
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Classification">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#output-exists" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        “Output exists”
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#not-a-usable-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        “Not a usable model”
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#almost-everything-comes-back-uncertain" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Almost everything comes back UNCERTAIN
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-call-type-i-care-about-never-gets-predicted" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A call type I care about never gets predicted
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#training" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Training
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Training">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#test-scores-look-implausibly-good" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test scores look implausibly good
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add-labeled-recordings-first-fewer-than-5-groups" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        “Add labeled recordings first” / fewer than 5 groups
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-model-learned-my-real-calls-as-noise" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The model learned my real calls as noise
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#training-is-very-slow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Training is very slow
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#still-stuck" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Still stuck?
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../development/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Development
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Installation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Installation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#macos-squeak-peek-studio-is-damaged-and-cant-be-opened" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        macOS: “Squeak Peek Studio is damaged and can't be opened”
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#windows-windows-protected-your-pc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Windows: “Windows protected your PC”
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#linux-the-app-will-not-start" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Linux: the app will not start
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#loading-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Loading data
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Loading data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#loading-a-recording-is-slow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Loading a recording is slow
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#label-files-are-not-found-in-batch-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Label files are not found in batch mode
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-label-file-fails-to-load" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A label file fails to load
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#detection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Detection
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Detection">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#no-detections-at-all" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        No detections at all
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#far-too-many-detections" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Far too many detections
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-detector-fires-on-the-room-not-the-animal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The detector fires on the room, not the animal
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#i-accepted-or-rejected-the-wrong-call" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        I accepted or rejected the wrong call
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#one-call-detected-as-several-fragments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        One call detected as several fragments
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#call-onsets-are-clipped" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Call onsets are clipped
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detection-is-very-slow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Detection is very slow
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sonification-and-audio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sonification and audio
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sonification and audio">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#no-sound" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        No sound
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sonification-is-all-hiss" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sonification is all hiss
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sonification-sounds-smeared-or-phasey" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sonification sounds smeared or “phasey”
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-calls-are-still-too-high-to-hear-comfortably" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The calls are still too high to hear comfortably
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#video" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Video
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Video">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#no-broadband-transient-snap-found" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        “No broadband transient (snap) found”
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#could-not-extract-an-audio-track" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        “Could not extract an audio track”
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#video-and-audio-drift-apart" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Video and audio drift apart
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#classification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Classification
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Classification">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#output-exists" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        “Output exists”
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#not-a-usable-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        “Not a usable model”
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#almost-everything-comes-back-uncertain" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Almost everything comes back UNCERTAIN
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-call-type-i-care-about-never-gets-predicted" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A call type I care about never gets predicted
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#training" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Training
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Training">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#test-scores-look-implausibly-good" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test scores look implausibly good
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add-labeled-recordings-first-fewer-than-5-groups" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        “Add labeled recordings first” / fewer than 5 groups
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-model-learned-my-real-calls-as-noise" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The model learned my real calls as noise
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#training-is-very-slow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Training is very slow
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#still-stuck" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Still stuck?
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/antoningazda/DEV_Squeak_Peek_Studio_PYTHON/edit/main/docs/troubleshooting.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h1>
+<h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h2>
+<h3 id="macos-squeak-peek-studio-is-damaged-and-cant-be-opened">macOS: “Squeak Peek Studio is damaged and can't be opened”<a class="headerlink" href="#macos-squeak-peek-studio-is-damaged-and-cant-be-opened" title="Permanent link">&para;</a></h3>
+<p>The app is not damaged. Current builds are not signed with an Apple
+Developer ID, and macOS shows this for any such app.</p>
+<p><strong>Right-click (or Control-click) the app → Open → Open.</strong> Once per
+installed version.</p>
+<p>If no <strong>Open</strong> button appears:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>xattr<span class="w"> </span>-dr<span class="w"> </span>com.apple.quarantine<span class="w"> </span><span class="s2">"/Applications/Squeak Peek Studio.app"</span>
+</code></pre></div>
+<h3 id="windows-windows-protected-your-pc">Windows: “Windows protected your PC”<a class="headerlink" href="#windows-windows-protected-your-pc" title="Permanent link">&para;</a></h3>
+<p>SmartScreen, for the same reason. Click <strong>More info</strong> → <strong>Run anyway</strong>.</p>
+<h3 id="linux-the-app-will-not-start">Linux: the app will not start<a class="headerlink" href="#linux-the-app-will-not-start" title="Permanent link">&para;</a></h3>
+<p>Missing Qt runtime libraries. On Debian/Ubuntu:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>libegl1<span class="w"> </span>libopengl0<span class="w"> </span>libxkbcommon0<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span>libxkbcommon-x11-0<span class="w"> </span>libxcb-cursor0<span class="w"> </span>libxcb-icccm4<span class="w"> </span>libxcb-image0<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">  </span>libxcb-keysyms1<span class="w"> </span>libxcb-randr0<span class="w"> </span>libxcb-render-util0<span class="w"> </span>libxcb-shape0<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">  </span>libxcb-xinerama0<span class="w"> </span>libdbus-1-3
+</code></pre></div>
+<p>Run the binary from a terminal — the error naming the missing library is
+printed there.</p>
+<hr />
+<h2 id="loading-data">Loading data<a class="headerlink" href="#loading-data" title="Permanent link">&para;</a></h2>
+<h3 id="loading-a-recording-is-slow">Loading a recording is slow<a class="headerlink" href="#loading-a-recording-is-slow" title="Permanent link">&para;</a></h3>
+<p>Expected for high-sample-rate audio: a two-minute 250 kHz file is ~70 MB
+and is read fully into memory. Turn on <strong>Visualization → Show loading
+dialog</strong> in <a href="../guide/settings/#visualization">Settings</a> to get a progress
+indicator.</p>
+<h3 id="label-files-are-not-found-in-batch-mode">Label files are not found in batch mode<a class="headerlink" href="#label-files-are-not-found-in-batch-mode" title="Permanent link">&para;</a></h3>
+<p>Matching is <strong>by filename stem</strong>. <code>recordings/animal_07.wav</code> pairs with
+<code>labels/animal_07*.txt</code>. Each folder field shows how many matches it found
+— if that count is zero or wrong, the stems do not line up.</p>
+<h3 id="a-label-file-fails-to-load">A label file fails to load<a class="headerlink" href="#a-label-file-fails-to-load" title="Permanent link">&para;</a></h3>
+<p>The error appears under <strong>Load errors</strong>; the recording still loads. Check
+the file against the <a href="../file-formats/#label-files">two-line format</a> — the
+commonest cause is a missing continuation line (the one starting with a
+backslash).</p>
+<hr />
+<h2 id="detection">Detection<a class="headerlink" href="#detection" title="Permanent link">&para;</a></h2>
+<h3 id="no-detections-at-all">No detections at all<a class="headerlink" href="#no-detections-at-all" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Check the frequency band.</strong> <code>fcutMin</code> / <code>fcutMax</code> default to
+   40–120 kHz. Mouse USVs often sit higher; some rat calls sit lower. Look
+   at the spectrogram with a wide display range and see where the energy
+   actually is.</li>
+<li><strong>Check the sample rate.</strong> A recording sampled at 44.1 kHz cannot
+   contain anything above 22 kHz — there is nothing in the USV band to
+   find.</li>
+<li><strong>Is tonality filtering removing everything?</strong> Set <strong>Min tonality</strong> back
+   to <code>0</code> and re-run.</li>
+<li><strong>ML/CNN:</strong> is <code>modelPath</code> set, and does the file exist?</li>
+</ol>
+<h3 id="far-too-many-detections">Far too many detections<a class="headerlink" href="#far-too-many-detections" title="Permanent link">&para;</a></h3>
+<p>In order of effect:</p>
+<ol>
+<li>Turn on <strong>Filter Broadband</strong> with <code>minTonality = 0.5</code>
+   (<a href="../methods/#tonality-filtering">why</a>).</li>
+<li>Raise <code>w</code> (PSD) — the weight on the local SNR term. On BSCD, <code>w</code> only
+   applies in <code>adaptive</code>
+   <a href="../methods/#threshold-mode">threshold mode</a>; in the default <code>mean</code> mode
+   raise <code>maWindow</code> instead.</li>
+<li>Raise <code>minEffectivePower</code> (PSD) or <code>medianFactor</code> (RBD).</li>
+<li>Raise <strong>Min label length</strong> in post-processing.</li>
+<li>If the background itself is the problem rather than any one setting,
+   check that the detector's <strong>Pre-processing</strong> denoise box is ticked (it is
+   for PSD by default) and then re-tune — see
+   <a href="../methods/#pre-detection-denoising">pre-detection denoising</a>.</li>
+</ol>
+<h3 id="the-detector-fires-on-the-room-not-the-animal">The detector fires on the room, not the animal<a class="headerlink" href="#the-detector-fires-on-the-room-not-the-animal" title="Permanent link">&para;</a></h3>
+<p>A constant fan, pump or electronics whine sits in the band all session and
+raises every energy-based detector's floor. Tick the detector's box under
+<strong>Detection → Pre-processing</strong> (PSD has it on by default), which estimates
+that background per frequency bin from the recording itself and subtracts
+it.</p>
+<p>Then re-tune: the thresholds you had were fitted to the undenoised
+envelope. <strong>Detection → Train detector → Tune detector parameters</strong> does
+this against the denoised audio automatically when the checkbox is on.</p>
+<h3 id="i-accepted-or-rejected-the-wrong-call">I accepted or rejected the wrong call<a class="headerlink" href="#i-accepted-or-rejected-the-wrong-call" title="Permanent link">&para;</a></h3>
+<p><kbd>Ctrl</kbd>+<kbd>Z</kbd> (<strong>Edit → Undo</strong>) reverts the last label edit —
+accept/reject, call-type change, boundary drag or a manual label. The last
+50 edits are kept, but <strong>loading a recording clears the history</strong>. See
+<a href="../guide/label-edit/#undoing-a-mistake">Label Edit → Undoing a mistake</a>.</p>
+<h3 id="one-call-detected-as-several-fragments">One call detected as several fragments<a class="headerlink" href="#one-call-detected-as-several-fragments" title="Permanent link">&para;</a></h3>
+<p><strong>Merge Close Labels</strong> is on by default; raise <strong>Max gap to merge</strong> above
+the default <code>0.005</code> s. Check the result visually — too large a value starts
+merging genuinely separate calls.</p>
+<h3 id="call-onsets-are-clipped">Call onsets are clipped<a class="headerlink" href="#call-onsets-are-clipped" title="Permanent link">&para;</a></h3>
+<p>This is PSD's characteristic failure: a call that rises gradually out of
+the noise crosses an energy threshold late. Try <strong>BSCD</strong>, which keys on
+statistical change rather than level, or <strong>RBD</strong> for the most precise
+boundaries.</p>
+<h3 id="detection-is-very-slow">Detection is very slow<a class="headerlink" href="#detection-is-very-slow" title="Permanent link">&para;</a></h3>
+<p>RBD fits autoregressive models across a sliding window and is inherently
+expensive. Lengthen <code>wlen</code> before lowering the AR orders. For a parameter
+hunt, turn off <code>runWholeSignal</code> on PSD and work on a 10-second ROI.</p>
+<p>The first run after launch is also slower than later ones: BSCD and RBD
+JIT-compile their inner loops on first use.</p>
+<p><strong>Denoise</strong> adds an STFT pass over the whole recording before detection. It
+is computed once per recording and shared by every classical detector in
+the same run, so ticking a second detector does not pay for it twice.</p>
+<hr />
+<h2 id="sonification-and-audio">Sonification and audio<a class="headerlink" href="#sonification-and-audio" title="Permanent link">&para;</a></h2>
+<h3 id="no-sound">No sound<a class="headerlink" href="#no-sound" title="Permanent link">&para;</a></h3>
+<p>Check your system output device. On Linux you also need a working
+PortAudio/ALSA setup (<code>libportaudio2</code>).</p>
+<h3 id="sonification-is-all-hiss">Sonification is all hiss<a class="headerlink" href="#sonification-is-all-hiss" title="Permanent link">&para;</a></h3>
+<p>Turn <strong>Sonification denoising</strong> on
+(<a href="../guide/settings/#visualization">Settings → Visualization</a>). An
+ultrasonic recording is mostly broadband noise; shifted down, that noise is
+louder than the calls.</p>
+<h3 id="sonification-sounds-smeared-or-phasey">Sonification sounds smeared or “phasey”<a class="headerlink" href="#sonification-sounds-smeared-or-phasey" title="Permanent link">&para;</a></h3>
+<p>Set <strong>Sonification playback speed</strong> back to <strong>Match the pitch shift</strong>. That
+makes it a pure tape-speed transform with no resynthesis and no artefacts.
+An independent slowdown factor costs a phase-vocoder pass.</p>
+<h3 id="the-calls-are-still-too-high-to-hear-comfortably">The calls are still too high to hear comfortably<a class="headerlink" href="#the-calls-are-still-too-high-to-hear-comfortably" title="Permanent link">&para;</a></h3>
+<p>Make <strong>Sonification semitones</strong> more negative. −36 is exactly three
+octaves.</p>
+<hr />
+<h2 id="video">Video<a class="headerlink" href="#video" title="Permanent link">&para;</a></h2>
+<h3 id="no-broadband-transient-snap-found">“No broadband transient (snap) found”<a class="headerlink" href="#no-broadband-transient-snap-found" title="Permanent link">&para;</a></h3>
+<p>The automatic sync could not find the marker. Either:</p>
+<ul>
+<li>annotate the sync point manually as an <strong><code>sk</code></strong> label in
+  <a href="../guide/label-edit/">Label Edit</a> and click <strong>Re-sync</strong> — this is the
+  reliable fix; or</li>
+<li>lower the <strong>snap threshold factor</strong> in Settings → Video.</li>
+</ul>
+<h3 id="could-not-extract-an-audio-track">“Could not extract an audio track”<a class="headerlink" href="#could-not-extract-an-audio-track" title="Permanent link">&para;</a></h3>
+<p>The video has no audio stream. Automatic sync is computed from the camera's
+audio, so it cannot work without one. Add an <code>sk</code> label to the ultrasonic
+recording and sync from that side.</p>
+<h3 id="video-and-audio-drift-apart">Video and audio drift apart<a class="headerlink" href="#video-and-audio-drift-apart" title="Permanent link">&para;</a></h3>
+<p>A single snap corrects a constant offset, not a clock-rate difference. If
+the two devices' clocks run at measurably different rates over a long
+recording, no single offset will hold — split the recording, or use a
+device that can be hardware-synced.</p>
+<hr />
+<h2 id="classification">Classification<a class="headerlink" href="#classification" title="Permanent link">&para;</a></h2>
+<h3 id="output-exists">“Output exists”<a class="headerlink" href="#output-exists" title="Permanent link">&para;</a></h3>
+<p>Results folders must not exist yet — results are never overwritten. Pick a
+new folder name.</p>
+<h3 id="not-a-usable-model">“Not a usable model”<a class="headerlink" href="#not-a-usable-model" title="Permanent link">&para;</a></h3>
+<p>The folder must contain <code>manifest.json</code>. Point the picker at the folder
+<em>containing</em> it, typically <code>&lt;output&gt;/run/model</code>.</p>
+<h3 id="almost-everything-comes-back-uncertain">Almost everything comes back UNCERTAIN<a class="headerlink" href="#almost-everything-comes-back-uncertain" title="Permanent link">&para;</a></h3>
+<p>The confidence thresholds were calibrated on recordings unlike yours. Train
+a model on your own data (<a href="../training/">Training models</a>), or accept the
+review queue as the cost of a model trained elsewhere.</p>
+<h3 id="a-call-type-i-care-about-never-gets-predicted">A call type I care about never gets predicted<a class="headerlink" href="#a-call-type-i-care-about-never-gets-predicted" title="Permanent link">&para;</a></h3>
+<p>It probably had fewer than <code>--min-examples</code> (default 10) training examples
+and was folded into plain USV. The training results panel lists which types
+this happened to. Collect more examples of it — lowering the threshold
+instead gives you a type learned from four examples, which is noise with a
+name.</p>
+<hr />
+<h2 id="training">Training<a class="headerlink" href="#training" title="Permanent link">&para;</a></h2>
+<h3 id="test-scores-look-implausibly-good">Test scores look implausibly good<a class="headerlink" href="#test-scores-look-implausibly-good" title="Permanent link">&para;</a></h3>
+<p>Check your <strong>groups</strong>. If two recordings of the same animal landed in
+different splits, the model has memorised that individual and the test
+score is meaningless. Recordings sharing animals must share a <code>GroupID</code>.</p>
+<h3 id="add-labeled-recordings-first-fewer-than-5-groups">“Add labeled recordings first” / fewer than 5 groups<a class="headerlink" href="#add-labeled-recordings-first-fewer-than-5-groups" title="Permanent link">&para;</a></h3>
+<p>Group-wise 60/20/20 splitting needs at least five groups. With fewer
+animals you cannot get an honest held-out estimate.</p>
+<h3 id="the-model-learned-my-real-calls-as-noise">The model learned my real calls as noise<a class="headerlink" href="#the-model-learned-my-real-calls-as-noise" title="Permanent link">&para;</a></h3>
+<p>You supplied a detected-labels file for a recording whose call-type labels
+are <strong>incomplete</strong>. NOISE examples are detections matching no labelled
+call, so every unlabelled real call became a NOISE example. Either complete
+the labels or leave the detected-labels column empty for that recording.</p>
+<h3 id="training-is-very-slow">Training is very slow<a class="headerlink" href="#training-is-very-slow" title="Permanent link">&para;</a></h3>
+<p>Use <code>--device mps</code> on Apple Silicon. For the CNN detector, stay on the
+<code>mobilenet</code> backbone unless you have a GPU. Run <strong>Check data</strong> first so you
+do not discover a problem an hour in.</p>
+<hr />
+<h2 id="still-stuck">Still stuck?<a class="headerlink" href="#still-stuck" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://github.com/antoningazda/DEV_Squeak_Peek_Studio_PYTHON/issues">Open an issue</a>
+  — include your OS, the app version (Info tab), and what you did.</li>
+<li>Email the author: <a href="mailto:antonin.gazda@gmail.com">antonin.gazda@gmail.com</a></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      © Antonín Gazda · MIT licensed · National Institute of Mental Health (NUDZ) & CTU Prague, Faculty of Electrical Engineering (FEL)
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/antoningazda/DEV_Squeak_Peek_Studio_PYTHON" target="_blank" rel="noopener" title="Source code on GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://github.com/antoningazda/squeak-peek-studio-releases/releases/latest" target="_blank" rel="noopener" title="Download the latest release" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M256 32c0-17.7-14.3-32-32-32s-32 14.3-32 32v210.7l-41.4-41.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l96 96c12.5 12.5 32.8 12.5 45.3 0l96-96c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 242.7zM64 320c-35.3 0-64 28.7-64 64v32c0 35.3 28.7 64 64 64h320c35.3 0 64-28.7 64-64v-32c0-35.3-28.7-64-64-64h-46.9l-56.6 56.6c-31.2 31.2-81.9 31.2-113.1 0L110.9 320zm304 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="mailto:antonin.gazda@gmail.com" target="_blank" rel="noopener" title="Email the author" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4l208 156a48 48 0 0 0 57.6 0l208-156c12.1-9.1 19.2-23.3 19.2-38.4 0-26.5-21.5-48-48-48zM0 196v188c0 35.3 28.7 64 64 64h384c35.3 0 64-28.7 64-64V196L313.6 344.8c-34.1 25.6-81.1 25.6-115.2 0z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.top", "navigation.indexes", "toc.follow", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate", "content.action.edit", "content.tabs.link"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>
